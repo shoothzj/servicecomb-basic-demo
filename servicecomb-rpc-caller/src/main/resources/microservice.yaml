@@ -1,0 +1,40 @@
+APPLICATION_ID: APP2
+
+service_description:
+  name: consumer
+  version: 0.0.1
+  properties:
+    allowCrossApp: true
+
+servicecomb:
+  service:
+    #Specifies the service center IP address.
+    registry:
+      address: http://127.0.0.1:30100
+  loadbalance:
+    isolation:
+      enabled: true
+    retryEnabled: true
+    retryOnNext: 1
+    retryOnSame: 0
+  flowcontrol:
+    Provider:
+      qps:
+        global:
+          limit: 750
+  rest:
+    address: 0.0.0.0:9898
+    server:
+      thread-count: 4
+      connection-limit: 2048
+      connection:
+        idleTimeoutInSeconds: 7405
+    client:
+      thread-count: 4
+      connection:
+        pool-per-thread: 1
+        maxPoolSize: 50
+        idleTimeoutInSeconds: 7400
+        keepAlive: true
+  request:
+    timeout: 30000
