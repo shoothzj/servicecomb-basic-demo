@@ -19,7 +19,8 @@ public class RestTemplateCallerBoot {
         BeanUtils.init();
         Person person = new Person();
         RestTemplate restTemplate = RestTemplateBuilder.create();
-        ResponseEntity<String> o = restTemplate.postForEntity("cse://APP1:provider/RpcHelloImpl/sayHello", person, String.class);
+        ResponseEntity<String> o = restTemplate.postForEntity("cse://APP1:provider/RpcHelloImpl/sayHello",
+                person, String.class);
         log.info("result is {}", o);
     }
 

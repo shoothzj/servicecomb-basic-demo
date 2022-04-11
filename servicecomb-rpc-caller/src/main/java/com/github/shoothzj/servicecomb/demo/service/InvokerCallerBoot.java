@@ -6,6 +6,8 @@ import org.apache.servicecomb.core.provider.consumer.InvokerUtils;
 import org.apache.servicecomb.foundation.common.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+
 /**
  * @author hezhangjian
  */
@@ -18,7 +20,9 @@ public class InvokerCallerBoot {
     public static void main(String[] args) {
         BeanUtils.init();
         Person person = new Person();
-        Object o = InvokerUtils.syncInvoke(serviceName, "hello", "sayHello", new Object[]{person});
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("person", person);
+        Object o = InvokerUtils.syncInvoke(serviceName, "hello", "sayHello", map);
         log.info("result is {}", o);
     }
 
