@@ -18,6 +18,12 @@ public class Person {
         this.name = name;
     }
 
+    public static void main(String[] args) {
+        long l1 = 400L * 1024L * 1024L * 1024L;
+        long l2 = 429496725504L;
+        System.out.println(l1 - l2);
+    }
+
     @Override
     public String toString() {
         return "Person{" + "name='" + name + '\'' + '}';
